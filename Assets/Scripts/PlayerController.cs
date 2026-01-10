@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private bool canMove(Vector2 nextPosition)
     {
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
+        // Comment wow
         return (!colsTilesMap.HasTile(gridPosition) && groundTilesMap.HasTile(gridPosition));
     }
 }
