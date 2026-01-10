@@ -26,21 +26,27 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         xPlayerControl = Input.GetKeyDown(KeyCode.A) ? -1 : (Input.GetKeyDown(KeyCode.D) ? 1 : 0);
         yPlayerControl = Input.GetKeyDown(KeyCode.W) ? 1 : (Input.GetKeyDown(KeyCode.S) ? -1 : 0);
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
             nextPos = new Vector2(
-                rb.position.x + xPlayerControl * xStep,
-                rb.position.y + yPlayerControl * yStep
+                nextPos.x + xPlayerControl * xStep,
+                nextPos.y + yPlayerControl * yStep
             );
         }
+    }
 
-        rb.position = Vector2.Lerp(rb.position, nextPos, Time.deltaTime * smoothness);
+    void FixedUpdate()
+    {
+        rb.MovePosition(Vector2.Lerp(rb.position, nextPos, Time.deltaTime * smoothness));
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 }
