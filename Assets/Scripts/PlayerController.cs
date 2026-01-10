@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D rb;
     public Tilemap colsTilesMap;
+    public Tilemap groundTilesMap;
 
     public float xStep;
     public float yStep;
@@ -53,13 +54,6 @@ public class PlayerController : MonoBehaviour
     private bool canMove(Vector2 nextPosition)
     {
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
-        if (colsTilesMap.HasTile(gridPosition))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return (!colsTilesMap.HasTile(gridPosition) && groundTilesMap.HasTile(gridPosition));
     }
 }
