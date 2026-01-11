@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     bool inMovement()
     {
-        return !(0.48 <= math.abs(rb.position.x % 1) && math.abs(rb.position.x % 1) <= 0.52) && !(0.48 <= math.abs(rb.position.y % 1) && math.abs(rb.position.y % 1) <= 0.52);
+        return !(0.48 <= math.abs(rb.position.x % 1) && math.abs(rb.position.x % 1) <= 0.52) || !(0.48 <= math.abs(rb.position.y % 1) && math.abs(rb.position.y % 1) <= 0.52);
     }
 
     bool canMove(Vector2 nextPosition)
@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
 
     void changeSprite()
     {
+        Debug.Log(inMovement());
         if (inMovement())
         {
             if (lightRotation.targetRotation == 0f) spriteRenderer.sprite = back_walk;
