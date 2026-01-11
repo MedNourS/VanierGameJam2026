@@ -14,6 +14,8 @@ public class PlayerLightSystem : MonoBehaviour
     void Start()
     {
         photonsCollider = photons.GetComponent<TilemapCollider2D>();
+        Vector3Int pos = photons.WorldToCell(transform.position);
+        photons.SetTile(pos, photonTile);
     }
     void Update()
     {
@@ -25,12 +27,12 @@ public class PlayerLightSystem : MonoBehaviour
                 Vector3Int pos = photons.WorldToCell(transform.position);
                 nextTile = pos + lightRotation.lightDirection * i;
 
-                
+
                 if (photons.HasTile(nextTile))
                 {
                     iterations++;
                 }
-                else if(obstacles.HasTile(nextTile))
+                else if (obstacles.HasTile(nextTile))
                 {
                     i = iterations;
                 }
