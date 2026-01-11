@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
         if (!colsTilesMap.HasTile(gridPosition))
         {
-            if (!playerLightSystem.playerHasWon && exitTileMap.HasTile(gridPosition))
+            if (playerLightSystem.playerHasWon && exitTileMap.HasTile(gridPosition))
             {
                 levelManager.loadNextScene();
             }

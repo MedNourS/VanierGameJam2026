@@ -7,6 +7,7 @@ public class PlayerLightSystem : MonoBehaviour
 {
     [SerializeField] private Tilemap photons;
     [SerializeField] private Tilemap obstacles;
+    [SerializeField] private Tilemap exitTileMap;
     [SerializeField] private TileBase photonTile;
     [SerializeField] private TileBase litLanternTile;
     [SerializeField] private LightRotation lightRotation;
@@ -57,7 +58,7 @@ public class PlayerLightSystem : MonoBehaviour
                 {
                     iterations++;
                 }
-                else if (obstacles.HasTile(nextTile))
+                else if (obstacles.HasTile(nextTile) || exitTileMap.HasTile(nextTile))
                 {
                     i = iterations;
                 }
