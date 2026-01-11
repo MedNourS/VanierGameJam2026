@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0be29f74ad24b582ab05f3674f374fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightRotationOnPlayerMovement
-  rotationSpeed: 400
+  rotationSpeed: 1000
 --- !u!114 &710330247
 MonoBehaviour:
   m_ObjectHideFlags: 0
