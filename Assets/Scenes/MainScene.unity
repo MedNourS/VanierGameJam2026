@@ -252,7 +252,7 @@ MonoBehaviour:
   photonsTilesMap: {fileID: 1217735585}
   lanternTileMap: {fileID: 1901857845}
   exitTileMap: {fileID: 548750214}
-  unlitLanternTile: {fileID: 11400000, guid: 906711aad0df3165fbc0435433be8827, type: 2}
+  unlitLanternTile: {fileID: 11400000, guid: f058b2d23caf80a15bf7a4fa72a078d5, type: 2}
   lightRotation: {fileID: 710330248}
   levelManager: {fileID: 1279842119}
   deathScreenCanvas: {fileID: 428272882}
@@ -349,12 +349,10 @@ MonoBehaviour:
   colsTileMap: {fileID: 1982909813}
   exitTileMap: {fileID: 548750214}
   obstaclesTileMap: {fileID: 1367466348}
-  photonTile: {fileID: 11400000, guid: 78f766a6605cc8767b6092a5876b9da8, type: 2}
-  litLanternTile: {fileID: 11400000, guid: a1acbb5009c41aeca8d3f788c8a84de3, type: 2}
-  bottomObstacle: {fileID: 11400000, guid: 91eb5092ab1e5890391b764ea9071d0e, type: 2}
-  upObstacle: {fileID: 11400000, guid: 6c1b234a84c14b669a63b39ea6cdbd50, type: 2}
-  leftObstacle: {fileID: 11400000, guid: ad6288135e5b96494b488e7715c907c9, type: 2}
-  rightObstacle: {fileID: 11400000, guid: b3887d28478a8661fb5189880cc8116d, type: 2}
+  photonTile: {fileID: 11400000, guid: d8225efe130d609f2912f0b655968959, type: 2}
+  litLanternTile: {fileID: 11400000, guid: 13014f679a30450ae9d96253e9901424, type: 2}
+  obstaclesDirections: {fileID: 11400000, guid: d6afa32f0d3140313833df0bfb42c4bd,
+    type: 2}
   lightRotation: {fileID: 710330248}
   lanternsTileMap: {fileID: 1901857845}
   textMesh: {fileID: 1707348555}
