@@ -19,20 +19,22 @@ public class PlayerLightSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            for (int i = 1; i < photonsLeft + 1; i++)
+            int iterations = photonsLeft;
+            for (int i = 0; i < iterations; i++)
             {
                 Vector3Int pos = photons.WorldToCell(transform.position);
                 nextTile = pos + lightRotation.lightDirection * i;
 
-                if(!obstacles.HasTile(nextTile))
+                
+                if (photons.HasTile(nextTile))
+                {
+                    iterations++;
+                    continue;
+                }
+                else if(!obstacles.HasTile(nextTile))
                 {
                     photons.SetTile(nextTile, photonTile);
                     photonsLeft--;
-                }
-                else if (photons.HasTile(nextTile))
-                {
-                    i--;
-                    continue;
                 }
                 else i = photonsLeft;
             }

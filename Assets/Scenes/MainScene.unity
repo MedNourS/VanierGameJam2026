@@ -320,10 +320,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238a8dd445e74a415b51c9655fedcc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  plates: {fileID: 1217735585}
+  photons: {fileID: 1217735585}
   obstacles: {fileID: 1982909813}
-  lightTile: {fileID: 11400000, guid: 78f766a6605cc8767b6092a5876b9da8, type: 2}
-  lightRotationOnPlayerMovement: {fileID: 710330246}
+  photonTile: {fileID: 11400000, guid: 78f766a6605cc8767b6092a5876b9da8, type: 2}
+  lightRotation: {fileID: 710330248}
   photonsLeft: 2
 --- !u!1 &710330244
 GameObject:
@@ -335,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710330245}
   - component: {fileID: 710330247}
-  - component: {fileID: 710330246}
+  - component: {fileID: 710330248}
   m_Layer: 0
   m_Name: Spot Light 2D
   m_TagString: Untagged
@@ -358,21 +358,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 32898648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &710330246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710330244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0be29f74ad24b582ab05f3674f374fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LightRotationOnPlayerMovement
-  rotationSpeed: 600
-  lightDirection: {x: 0, y: 0, z: 0}
-  targetRotation: 0
 --- !u!114 &710330247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +410,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &710330248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710330244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0be29f74ad24b582ab05f3674f374fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightRotationOnPlayerMovement
+  rotationSpeed: 600
+  lightDirection: {x: 0, y: 0, z: 0}
+  targetRotation: 0
 --- !u!1 &1041423363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,7 +1788,7 @@ GameObject:
   - component: {fileID: 1217735584}
   - component: {fileID: 1217735586}
   m_Layer: 0
-  m_Name: Plates
+  m_Name: Photons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1873,46 +1873,16 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217735582}
   m_Enabled: 1
-  m_Tiles:
-  - first: {x: -1, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -4, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 3, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
+  m_Tiles: {}
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 3
-    m_Data: {fileID: 11400000, guid: 88222a07fd66ac3d38e357af4ae018c6, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 3
-    m_Data: {fileID: -1623551496, guid: f954796173a41796c976520260923a1c, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 3
+  - m_RefCount: 0
     m_Data:
       e00: 1
       e01: 0
@@ -1931,7 +1901,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 3
+  - m_RefCount: 0
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
