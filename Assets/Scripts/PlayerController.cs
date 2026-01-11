@@ -50,13 +50,14 @@ public class PlayerController : MonoBehaviour
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             );
-            Debug.Log(checkIfPlayerDies());
+            Debug.Log(checkIfPlayerDies(newPos));
         }
     }
-    private bool checkIfPlayerDies()
+    private bool checkIfPlayerDies(Vector2 playerPos)
     {
-        if(photonsTilesMap.HasTile(Vector3Int.up) || photonsTilesMap.HasTile(Vector3Int.down) || photonsTilesMap.HasTile(Vector3Int.left) || photonsTilesMap.HasTile(Vector3Int.right) || 
-        photonsTilesMap.HasTile(Vector3Int.up + Vector3Int.right) || photonsTilesMap.HasTile(Vector3Int.down + Vector3Int.right) || photonsTilesMap.HasTile(Vector3Int.down + Vector3Int.left) || photonsTilesMap.HasTile(Vector3Int.up + Vector3Int.left))
+        Vector3Int currentPos = photonsTilesMap.WorldToCell(playerPos);
+        if (photonsTilesMap.HasTile(currentPos + Vector3Int.up) || photonsTilesMap.HasTile(currentPos + Vector3Int.down) || photonsTilesMap.HasTile(currentPos + Vector3Int.left) || photonsTilesMap.HasTile(currentPos + Vector3Int.right) ||
+        photonsTilesMap.HasTile(currentPos + Vector3Int.up + Vector3Int.right) || photonsTilesMap.HasTile(currentPos + Vector3Int.down + Vector3Int.right) || photonsTilesMap.HasTile(currentPos + Vector3Int.down + Vector3Int.left) || photonsTilesMap.HasTile(currentPos + Vector3Int.up + Vector3Int.left))
         {
             return false;
         }
