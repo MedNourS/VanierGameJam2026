@@ -19,8 +19,6 @@ public class PlayerController : MonoBehaviour
 
     public float smoothness;
 
-    public int lanternCount;
-
     private float xPlayerControl;
     private float yPlayerControl;
 
@@ -29,8 +27,6 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
         playerLightSystem = GetComponent<PlayerLightSystem>();
         newPos = new Vector2(
             rb.position.x,
@@ -64,7 +60,7 @@ public class PlayerController : MonoBehaviour
             );
             textMesh.text = "<" + playerLightSystem.photonsLeft + " Photons Left>";
 
-            Debug.Log(checkIfPlayerDies(newPos));
+            Debug.Log("Player dead? " + checkIfPlayerDies(newPos));
         }
     }
     private bool checkIfPlayerDies(Vector2 playerPos)

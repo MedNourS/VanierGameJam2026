@@ -239,6 +239,7 @@ MonoBehaviour:
   xStep: 1
   yStep: 1
   smoothness: 25
+  lanternCount: 0
 --- !u!50 &32898650
 Rigidbody2D:
   serializedVersion: 5

@@ -46,7 +46,7 @@ public class PlayerLightSystem : MonoBehaviour
                 if (lanternsTileMap.HasTile(nextTile))
                 {
                     lanternsTileMap.SetTile(nextTile, litLanternTile);
-                    checkIfPlayerWins();
+                    Debug.Log("Player won? " + checkIfPlayerWins());
                 }
 
 
