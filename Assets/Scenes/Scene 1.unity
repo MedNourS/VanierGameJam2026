@@ -334,6 +334,7 @@ MonoBehaviour:
   lanternsTileMap: {fileID: 1901857845}
   textMesh: {fileID: 1707348555}
   photonsLeft: 2
+  playerHasWon: 0
 --- !u!114 &32898653
 MonoBehaviour:
   m_ObjectHideFlags: 0

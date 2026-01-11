@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public Tilemap exitTileMap;
     public TileBase unlitLanternTile;
 
-    public PlayerLightSystem playerLightSystem;
+    private PlayerLightSystem playerLightSystem;
     public LevelManager levelManager;
 
     public float xStep;

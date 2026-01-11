@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public Scene nextScene;
+    [SerializeField] private Scene nextScene;
 
     public void loadNextScene()
     {
