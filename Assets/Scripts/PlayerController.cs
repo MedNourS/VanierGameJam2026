@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public Tilemap colsTilesMap;
     public Tilemap photonsTilesMap;
     public Tilemap lanternTileMap;
+    public Tilemap exitTileMap;
     public TileBase unlitLanternTile;
 
     public PlayerLightSystem playerLightSystem;
+    public LevelManager levelManager;
 
     public float xStep;
     public float yStep;
@@ -92,6 +94,11 @@ public class PlayerController : MonoBehaviour
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
         if (!colsTilesMap.HasTile(gridPosition))
         {
+            if(!playerLightSystem.playerHasWon && exitTileMap.HasTile(gridPosition))
+            {
+                levelManager.loadNextScene();
+            }
+            ; 
             if(playerLightSystem.playerHasWon || photonsTilesMap.HasTile(gridPosition)) return true;
             return false;
         }
