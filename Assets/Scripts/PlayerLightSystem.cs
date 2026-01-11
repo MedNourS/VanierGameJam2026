@@ -64,7 +64,7 @@ public class PlayerLightSystem : MonoBehaviour
                     photonsLeft--;
                 }
             }
-            textMesh.text = "<" + photonsLeft + " Photons Left>";
+            PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs{photonsLeft = photonsLeft});
         }
     }
 

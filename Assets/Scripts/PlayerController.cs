@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             );
-            textMesh.text = "<" + playerLightSystem.photonsLeft + " Photons Left>";
+            PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs{photonsLeft = playerLightSystem.photonsLeft});
 
             Debug.Log("Player dead? " + checkIfPlayerDies(newPos));
         }

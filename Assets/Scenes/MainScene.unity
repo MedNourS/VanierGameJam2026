@@ -133,6 +133,8 @@ GameObject:
   - component: {fileID: 32898649}
   - component: {fileID: 32898651}
   - component: {fileID: 32898652}
+  - component: {fileID: 32898653}
+  - component: {fileID: 32898654}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -239,7 +241,6 @@ MonoBehaviour:
   xStep: 1
   yStep: 1
   smoothness: 25
-  lanternCount: 0
 --- !u!50 &32898650
 Rigidbody2D:
   serializedVersion: 5
@@ -333,6 +334,30 @@ MonoBehaviour:
   lanternsTileMap: {fileID: 1901857845}
   textMesh: {fileID: 1707348555}
   photonsLeft: 2
+--- !u!114 &32898653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32898646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c56e97164ebe052bb9692312558664e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &32898654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32898646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb94d8da9de1d4bb96472d2a28bdfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &543993322
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +561,7 @@ GameObject:
   - component: {fileID: 710330245}
   - component: {fileID: 710330247}
   - component: {fileID: 710330248}
+  - component: {fileID: 710330249}
   m_Layer: 0
   m_Name: Spot Light 2D
   m_TagString: Untagged
@@ -623,8 +649,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightRotationOnPlayerMovement
   rotationSpeed: 600
-  lightDirection: {x: 0, y: 0, z: 0}
-  targetRotation: 0
+  lightDirection: {x: 1, y: 0, z: 0}
+  targetRotation: -90
+--- !u!114 &710330249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710330244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37af32dfd474e16c694527bb25553fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  photonStrength: 0.1
+  minLigth: 0.2
 --- !u!1 &1041423363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,6 +2354,7 @@ GameObject:
   - component: {fileID: 1707348554}
   - component: {fileID: 1707348556}
   - component: {fileID: 1707348555}
+  - component: {fileID: 1707348557}
   m_Layer: 5
   m_Name: Photons Left
   m_TagString: Untagged
@@ -2441,6 +2482,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707348553}
   m_CullTransparentMesh: 1
+--- !u!114 &1707348557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707348553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e11fa60fa1713835b6f015c872fe459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1901857842
 GameObject:
   m_ObjectHideFlags: 0
