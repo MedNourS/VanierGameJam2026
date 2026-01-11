@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI textMesh;
+    [SerializeField] private LanternLightingScript lanternLightingScript;
     public Rigidbody2D rb;
     public Tilemap colsTilesMap;
     public Tilemap photonsTilesMap;
@@ -51,7 +52,8 @@ public class PlayerController : MonoBehaviour
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             );
-            if(!playerLightSystem.playerHasWon){
+            if (!playerLightSystem.playerHasWon)
+            {
                 Vector3Int currentPos = photonsTilesMap.WorldToCell(transform.position);
                 photonsTilesMap.SetTile(currentPos, null);
                 playerLightSystem.incrementPhotonsLeft();
@@ -59,10 +61,11 @@ public class PlayerController : MonoBehaviour
                 if (lanternTileMap.HasTile(currentPos))
                 {
                     lanternTileMap.SetTile(currentPos, unlitLanternTile);
+                    lanternLightingScript.updateLanterns();
                 }
 
 
-                PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs{photonsLeft = playerLightSystem.photonsLeft});
+                PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs { photonsLeft = playerLightSystem.photonsLeft });
 
                 Debug.Log("Player dead? " + checkIfPlayerDies(newPos));
             }
@@ -94,12 +97,12 @@ public class PlayerController : MonoBehaviour
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
         if (!colsTilesMap.HasTile(gridPosition))
         {
-            if(!playerLightSystem.playerHasWon && exitTileMap.HasTile(gridPosition))
+            if (!playerLightSystem.playerHasWon && exitTileMap.HasTile(gridPosition))
             {
                 levelManager.loadNextScene();
             }
-            ; 
-            if(playerLightSystem.playerHasWon || photonsTilesMap.HasTile(gridPosition)) return true;
+            ;
+            if (playerLightSystem.playerHasWon || photonsTilesMap.HasTile(gridPosition)) return true;
             return false;
         }
         else return false;

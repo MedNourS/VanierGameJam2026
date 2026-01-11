@@ -12,6 +12,7 @@ public class PlayerLightSystem : MonoBehaviour
     [SerializeField] private LightRotation lightRotation;
     [SerializeField] private Tilemap lanternsTileMap;
     [SerializeField] private TextMeshProUGUI textMesh;
+    [SerializeField] private LanternLightingScript lanternLightingScript;
     private TilemapCollider2D photonsCollider;
     private Vector3Int nextTile;
     private int lanternCount = 0;
@@ -47,6 +48,7 @@ public class PlayerLightSystem : MonoBehaviour
                 if (lanternsTileMap.HasTile(nextTile))
                 {
                     lanternsTileMap.SetTile(nextTile, litLanternTile);
+                    lanternLightingScript.updateLanterns();
                     checkIfPlayerWins();
                 }
 
@@ -65,7 +67,7 @@ public class PlayerLightSystem : MonoBehaviour
                     photonsLeft--;
                 }
             }
-            PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs{photonsLeft = photonsLeft});
+            PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs { photonsLeft = photonsLeft });
         }
     }
 
@@ -82,7 +84,11 @@ public class PlayerLightSystem : MonoBehaviour
             }
         }
 
-        if (litLanters == lanternCount) playerHasWon = true;
+        if (litLanters == lanternCount)
+        {
+            playerHasWon = true;
+            lanternLightingScript.winningLanterns();
+        }
     }
     public void incrementPhotonsLeft()
     {
