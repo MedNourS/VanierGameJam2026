@@ -1,11 +1,11 @@
-using System;
-using Unity.Mathematics;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
 
+    [SerializeField] private TextMeshProUGUI textMesh;
     public Rigidbody2D rb;
     public Tilemap colsTilesMap;
     public Tilemap photonsTilesMap;
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             );
+            textMesh.text = "<" + playerLightSystem.photonsLeft + " Photons Left>";
             Debug.Log(checkIfPlayerDies(newPos));
         }
     }

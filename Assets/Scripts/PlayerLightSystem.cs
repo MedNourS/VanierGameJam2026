@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,10 +10,11 @@ public class PlayerLightSystem : MonoBehaviour
     [SerializeField] private TileBase photonTile;
     [SerializeField] private TileBase litLanternTile;
     [SerializeField] private LightRotation lightRotation;
-    private TilemapCollider2D photonsCollider;
     [SerializeField] private Tilemap lanternsTileMap;
-    public int photonsLeft;
+    [SerializeField] private TextMeshProUGUI textMesh;
+    private TilemapCollider2D photonsCollider;
     private Vector3Int nextTile;
+    public int photonsLeft;
     void Start()
     {
         photonsCollider = photons.GetComponent<TilemapCollider2D>();
@@ -49,6 +51,7 @@ public class PlayerLightSystem : MonoBehaviour
                     photonsLeft--;
                 }
             }
+            textMesh.text = "<" + photonsLeft + " Photons Left>";
         }
     }
 
