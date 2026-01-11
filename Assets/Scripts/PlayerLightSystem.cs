@@ -7,8 +7,10 @@ public class PlayerLightSystem : MonoBehaviour
     [SerializeField] private Tilemap photons;
     [SerializeField] private Tilemap obstacles;
     [SerializeField] private TileBase photonTile;
+    [SerializeField] private TileBase litLanternTile;
     [SerializeField] private LightRotation lightRotation;
     private TilemapCollider2D photonsCollider;
+    [SerializeField] private Tilemap lanternsTileMap;
     public int photonsLeft;
     private Vector3Int nextTile;
     void Start()
@@ -26,6 +28,11 @@ public class PlayerLightSystem : MonoBehaviour
             {
                 Vector3Int pos = photons.WorldToCell(transform.position);
                 nextTile = pos + lightRotation.lightDirection * i;
+
+                if (lanternsTileMap.HasTile(nextTile))
+                {
+                    lanternsTileMap.SetTile(nextTile, litLanternTile);
+                }
 
 
                 if (photons.HasTile(nextTile))
