@@ -45,5 +45,8 @@ public class PlayerLightSystem : MonoBehaviour
         }
     }
 
-
+    public void incrementPhotonsLeft()
+    {
+        photonsLeft++;
+    }
 }

@@ -231,7 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   rb: {fileID: 32898650}
   colsTilesMap: {fileID: 1982909813}
-  groundTilesMap: {fileID: 1217735585}
+  photonsTilesMap: {fileID: 1217735585}
+  playerLightSystem: {fileID: 0}
   xStep: 1
   yStep: 1
   smoothness: 25

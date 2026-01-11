@@ -8,7 +8,9 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D rb;
     public Tilemap colsTilesMap;
-    public Tilemap groundTilesMap;
+    public Tilemap photonsTilesMap;
+
+    public PlayerLightSystem playerLightSystem;
 
     public float xStep;
     public float yStep;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerLightSystem = GetComponent<PlayerLightSystem>();
         newPos = new Vector2(
             rb.position.x,
             rb.position.y
@@ -40,6 +43,9 @@ public class PlayerController : MonoBehaviour
                 newPos.y + yPlayerControl * yStep
             )))
         {
+            Vector3Int currentPos = photonsTilesMap.WorldToCell(transform.position);
+            photonsTilesMap.SetTile(currentPos, null);
+            playerLightSystem.incrementPhotonsLeft();
             newPos = new Vector2(
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
@@ -65,6 +71,6 @@ public class PlayerController : MonoBehaviour
     private bool canMove(Vector2 nextPosition)
     {
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
-        return (!colsTilesMap.HasTile(gridPosition) && groundTilesMap.HasTile(gridPosition));
+        return (!colsTilesMap.HasTile(gridPosition) && photonsTilesMap.HasTile(gridPosition));
     }
 }
