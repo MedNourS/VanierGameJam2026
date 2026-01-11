@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Tilemap colsTilesMap;
     public Tilemap photonsTilesMap;
+    public Tilemap lanternTileMap;
+    public TileBase unlitLanternTile;
 
     public PlayerLightSystem playerLightSystem;
 
@@ -46,6 +48,12 @@ public class PlayerController : MonoBehaviour
             Vector3Int currentPos = photonsTilesMap.WorldToCell(transform.position);
             photonsTilesMap.SetTile(currentPos, null);
             playerLightSystem.incrementPhotonsLeft();
+
+            if (lanternTileMap.HasTile(currentPos))
+            {
+                lanternTileMap.SetTile(currentPos, unlitLanternTile);
+            }
+
             newPos = new Vector2(
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep

@@ -232,6 +232,8 @@ MonoBehaviour:
   rb: {fileID: 32898650}
   colsTilesMap: {fileID: 1982909813}
   photonsTilesMap: {fileID: 1217735585}
+  lanternTileMap: {fileID: 1901857845}
+  unlitLanternTile: {fileID: 11400000, guid: 906711aad0df3165fbc0435433be8827, type: 2}
   playerLightSystem: {fileID: 0}
   xStep: 1
   yStep: 1
@@ -2186,7 +2188,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
