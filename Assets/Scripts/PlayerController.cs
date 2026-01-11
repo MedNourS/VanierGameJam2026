@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     public float smoothness;
 
+    public int lanternCount;
+
     private float xPlayerControl;
     private float yPlayerControl;
 
@@ -27,6 +29,18 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        lanternCount = 0;
+
+        TileBase[] lanternTiles = lanternTileMap.GetTilesBlock(lanternTileMap.cellBounds);
+
+        for (int i = 0; i < lanternTiles.Length; i++)
+        {
+            if (lanternTiles[i] != null)
+            {
+                lanternCount++;
+            }
+        }
+
         playerLightSystem = GetComponent<PlayerLightSystem>();
         newPos = new Vector2(
             rb.position.x,
@@ -59,6 +73,7 @@ public class PlayerController : MonoBehaviour
                 newPos.y + yPlayerControl * yStep
             );
             textMesh.text = "<" + playerLightSystem.photonsLeft + " Photons Left>";
+
             Debug.Log(checkIfPlayerDies(newPos));
         }
     }
