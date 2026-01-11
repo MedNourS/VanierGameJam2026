@@ -2133,8 +2133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e101580bf1e77d8eac0755f0855ad10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  nextScene: {fileID: 102900000, guid: dc15714624742eb7cb195984056f18dd, type: 3}
-  previousScene: {fileID: 0}
+  sceneName: Scene 2
 --- !u!4 &1279842120
 Transform:
   m_ObjectHideFlags: 0
