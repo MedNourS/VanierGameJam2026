@@ -50,7 +50,17 @@ public class PlayerController : MonoBehaviour
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             );
+            Debug.Log(checkIfPlayerDies());
         }
+    }
+    private bool checkIfPlayerDies()
+    {
+        if(photonsTilesMap.HasTile(Vector3Int.up) || photonsTilesMap.HasTile(Vector3Int.down) || photonsTilesMap.HasTile(Vector3Int.left) || photonsTilesMap.HasTile(Vector3Int.right) || 
+        photonsTilesMap.HasTile(Vector3Int.up + Vector3Int.right) || photonsTilesMap.HasTile(Vector3Int.down + Vector3Int.right) || photonsTilesMap.HasTile(Vector3Int.down + Vector3Int.left) || photonsTilesMap.HasTile(Vector3Int.up + Vector3Int.left))
+        {
+            return false;
+        }
+        else return true;
     }
 
     void FixedUpdate()
@@ -61,11 +71,6 @@ public class PlayerController : MonoBehaviour
     private bool getButtons()
     {
         return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
-    }
-
-    private bool notMoving()
-    {
-        return (0.49f <= math.abs(rb.position.x % 1) && math.abs(rb.position.x % 1) <= 0.5f) && (0.49f <= math.abs(rb.position.y % 1) && math.abs(rb.position.y % 1) <= 0.5f);
     }
 
     private bool canMove(Vector2 nextPosition)
