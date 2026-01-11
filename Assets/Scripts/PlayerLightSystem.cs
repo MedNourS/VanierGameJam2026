@@ -12,10 +12,7 @@ public class PlayerLightSystem : MonoBehaviour
     [SerializeField] private Tilemap obstaclesTileMap;
     [SerializeField] private TileBase photonTile;
     [SerializeField] private TileBase litLanternTile;
-    [SerializeField] private TileBase bottomObstacle;
-    [SerializeField] private TileBase upObstacle;
-    [SerializeField] private TileBase leftObstacle;
-    [SerializeField] private TileBase rightObstacle;
+    [SerializeField] private ObstaclesDirections obstaclesDirections;
     [SerializeField] private LightRotation lightRotation;
     [SerializeField] private Tilemap lanternsTileMap;
     [SerializeField] private TextMeshProUGUI textMesh;
@@ -30,10 +27,10 @@ public class PlayerLightSystem : MonoBehaviour
     {
         tileObstacleDirToVectorDir = new Dictionary<TileBase, Vector3Int>()
         {
-            {bottomObstacle, Vector3Int.down},
-            {upObstacle, Vector3Int.up},
-            {leftObstacle, Vector3Int.left},
-            {rightObstacle, Vector3Int.right},
+            {obstaclesDirections.bottomObstacle, Vector3Int.down},
+            {obstaclesDirections.upObstacle, Vector3Int.up},
+            {obstaclesDirections.leftObstacle, Vector3Int.left},
+            {obstaclesDirections.rightObstacle, Vector3Int.right},
         };
 
         Vector3Int pos = photons.WorldToCell(transform.position);
