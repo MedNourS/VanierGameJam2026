@@ -14,12 +14,24 @@ public class PlayerLightSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textMesh;
     private TilemapCollider2D photonsCollider;
     private Vector3Int nextTile;
+    private int lanternCount = 0;
     public int photonsLeft;
     void Start()
     {
         photonsCollider = photons.GetComponent<TilemapCollider2D>();
         Vector3Int pos = photons.WorldToCell(transform.position);
         photons.SetTile(pos, photonTile);
+
+        TileBase[] lanternTiles = lanternsTileMap.GetTilesBlock(lanternsTileMap.cellBounds);
+
+        for (int i = 0; i < lanternTiles.Length; i++)
+        {
+            if (lanternTiles[i] != null)
+            {
+                lanternCount++;
+            }
+        }
+
     }
     void Update()
     {
@@ -34,6 +46,7 @@ public class PlayerLightSystem : MonoBehaviour
                 if (lanternsTileMap.HasTile(nextTile))
                 {
                     lanternsTileMap.SetTile(nextTile, litLanternTile);
+                    checkIfPlayerWins();
                 }
 
 
@@ -55,6 +68,22 @@ public class PlayerLightSystem : MonoBehaviour
         }
     }
 
+    private bool checkIfPlayerWins()
+    {
+        int litLanters = 0;
+        TileBase[] lanternTiles = lanternsTileMap.GetTilesBlock(lanternsTileMap.cellBounds);
+
+        for (int i = 0; i < lanternTiles.Length; i++)
+        {
+            if (lanternTiles[i] == litLanternTile)
+            {
+                litLanters++;
+            }
+        }
+
+        if (litLanters == lanternCount) return true;
+        else return false;
+    }
     public void incrementPhotonsLeft()
     {
         photonsLeft++;

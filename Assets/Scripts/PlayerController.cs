@@ -29,17 +29,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lanternCount = 0;
 
-        TileBase[] lanternTiles = lanternTileMap.GetTilesBlock(lanternTileMap.cellBounds);
-
-        for (int i = 0; i < lanternTiles.Length; i++)
-        {
-            if (lanternTiles[i] != null)
-            {
-                lanternCount++;
-            }
-        }
 
         playerLightSystem = GetComponent<PlayerLightSystem>();
         newPos = new Vector2(
