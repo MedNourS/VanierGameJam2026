@@ -29,14 +29,16 @@ public class PlayerLightSystem : MonoBehaviour
                 if (photons.HasTile(nextTile))
                 {
                     iterations++;
-                    continue;
                 }
-                else if(!obstacles.HasTile(nextTile))
+                else if(obstacles.HasTile(nextTile))
+                {
+                    i = iterations;
+                }
+                else
                 {
                     photons.SetTile(nextTile, photonTile);
                     photonsLeft--;
                 }
-                else i = photonsLeft;
             }
         }
     }
