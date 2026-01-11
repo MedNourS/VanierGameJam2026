@@ -20,8 +20,8 @@ public class PlayerLightSystem : MonoBehaviour
     [SerializeField] private Tilemap lanternsTileMap;
     [SerializeField] private TextMeshProUGUI textMesh;
     [SerializeField] private LanternLightingScript lanternLightingScript;
-    private TilemapCollider2D photonsCollider;
     private Vector3Int nextTile;
+    private PlayerController playerController;
     private int lanternCount = 0;
     private Dictionary<TileBase, Vector3Int> tileObstacleDirToVectorDir;
     public int photonsLeft;
@@ -36,7 +36,6 @@ public class PlayerLightSystem : MonoBehaviour
             {rightObstacle, Vector3Int.right},
         };
 
-        photonsCollider = photons.GetComponent<TilemapCollider2D>();
         Vector3Int pos = photons.WorldToCell(transform.position);
         photons.SetTile(pos, photonTile);
 
@@ -49,13 +48,13 @@ public class PlayerLightSystem : MonoBehaviour
                 lanternCount++;
             }
         }
-
+        playerController = GetComponent<PlayerController>();
 
 
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !playerController.playerDead)
         {
             int iterations = photonsLeft;
             Vector3Int pos = photons.WorldToCell(transform.position);

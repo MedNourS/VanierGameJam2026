@@ -255,9 +255,11 @@ MonoBehaviour:
   unlitLanternTile: {fileID: 11400000, guid: 906711aad0df3165fbc0435433be8827, type: 2}
   lightRotation: {fileID: 710330248}
   levelManager: {fileID: 1279842119}
+  deathScreenCanvas: {fileID: 428272882}
   xStep: 1
   yStep: 1
   smoothness: 25
+  playerDead: 0
 --- !u!50 &32898650
 Rigidbody2D:
   serializedVersion: 5
@@ -539,7 +541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &428272880
 MonoBehaviour:
   m_ObjectHideFlags: 0

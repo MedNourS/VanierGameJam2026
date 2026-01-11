@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LightRotation lightRotation;
     private PlayerLightSystem playerLightSystem;
     public LevelManager levelManager;
+    public Canvas deathScreenCanvas;
 
     public float xStep;
     public float yStep;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private float xPlayerControl;
     private float yPlayerControl;
+    public bool playerDead = false;
 
     private Vector2 newPos;
 
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // if button and not in movement and can move to target 
-        if (getButtons() && !inMovement() && canMove(new Vector2(
+        if (getButtons() && !inMovement() && !playerDead && canMove(new Vector2(
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             )))
@@ -86,21 +88,23 @@ public class PlayerController : MonoBehaviour
 
                 PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs { photonsLeft = playerLightSystem.photonsLeft });
 
-                Debug.Log("Player dead? " + checkIfPlayerDies(newPos));
+                checkIfPlayerDies(newPos);
             }
         }
 
-        changeSprite();
+        if(!playerDead) changeSprite();
     }
-    private bool checkIfPlayerDies(Vector2 playerPos)
+    private void checkIfPlayerDies(Vector2 playerPos)
     {
         Vector3Int currentPos = photonsTilesMap.WorldToCell(playerPos);
         if (photonsTilesMap.HasTile(currentPos + Vector3Int.up) || photonsTilesMap.HasTile(currentPos + Vector3Int.down) || photonsTilesMap.HasTile(currentPos + Vector3Int.left) || photonsTilesMap.HasTile(currentPos + Vector3Int.right) ||
         photonsTilesMap.HasTile(currentPos + Vector3Int.up + Vector3Int.right) || photonsTilesMap.HasTile(currentPos + Vector3Int.down + Vector3Int.right) || photonsTilesMap.HasTile(currentPos + Vector3Int.down + Vector3Int.left) || photonsTilesMap.HasTile(currentPos + Vector3Int.up + Vector3Int.left))
         {
-            return false;
+            return;
         }
-        else return true;
+        playerDead = true;
+        deathScreenCanvas.gameObject.SetActive(true);
+        deathScreenCanvas.GetComponent<deathScreenAnimation>().startAnimation();
     }
 
     void FixedUpdate()
@@ -136,7 +140,6 @@ public class PlayerController : MonoBehaviour
 
     void changeSprite()
     {
-        Debug.Log(inMovement());
         if (inMovement())
         {
             if (lightRotation.targetRotation == 0f) spriteRenderer.sprite = back_walk;
