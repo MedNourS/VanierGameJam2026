@@ -45,22 +45,25 @@ public class PlayerController : MonoBehaviour
                 newPos.y + yPlayerControl * yStep
             )))
         {
-            Vector3Int currentPos = photonsTilesMap.WorldToCell(transform.position);
-            photonsTilesMap.SetTile(currentPos, null);
-            playerLightSystem.incrementPhotonsLeft();
-
-            if (lanternTileMap.HasTile(currentPos))
-            {
-                lanternTileMap.SetTile(currentPos, unlitLanternTile);
-            }
-
             newPos = new Vector2(
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             );
-            PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs{photonsLeft = playerLightSystem.photonsLeft});
+            if(!playerLightSystem.playerHasWon){
+                Vector3Int currentPos = photonsTilesMap.WorldToCell(transform.position);
+                photonsTilesMap.SetTile(currentPos, null);
+                playerLightSystem.incrementPhotonsLeft();
 
-            Debug.Log("Player dead? " + checkIfPlayerDies(newPos));
+                if (lanternTileMap.HasTile(currentPos))
+                {
+                    lanternTileMap.SetTile(currentPos, unlitLanternTile);
+                }
+
+
+                PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs{photonsLeft = playerLightSystem.photonsLeft});
+
+                Debug.Log("Player dead? " + checkIfPlayerDies(newPos));
+            }
         }
     }
     private bool checkIfPlayerDies(Vector2 playerPos)
@@ -87,6 +90,11 @@ public class PlayerController : MonoBehaviour
     private bool canMove(Vector2 nextPosition)
     {
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
-        return (!colsTilesMap.HasTile(gridPosition) && photonsTilesMap.HasTile(gridPosition));
+        if (!colsTilesMap.HasTile(gridPosition))
+        {
+            if(playerLightSystem.playerHasWon || photonsTilesMap.HasTile(gridPosition)) return true;
+            return false;
+        }
+        else return false;
     }
 }

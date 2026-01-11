@@ -16,6 +16,7 @@ public class PlayerLightSystem : MonoBehaviour
     private Vector3Int nextTile;
     private int lanternCount = 0;
     public int photonsLeft;
+    public bool playerHasWon;
     void Start()
     {
         photonsCollider = photons.GetComponent<TilemapCollider2D>();
@@ -46,7 +47,7 @@ public class PlayerLightSystem : MonoBehaviour
                 if (lanternsTileMap.HasTile(nextTile))
                 {
                     lanternsTileMap.SetTile(nextTile, litLanternTile);
-                    Debug.Log("Player won? " + checkIfPlayerWins());
+                    checkIfPlayerWins();
                 }
 
 
@@ -68,7 +69,7 @@ public class PlayerLightSystem : MonoBehaviour
         }
     }
 
-    private bool checkIfPlayerWins()
+    private void checkIfPlayerWins()
     {
         int litLanters = 0;
         TileBase[] lanternTiles = lanternsTileMap.GetTilesBlock(lanternsTileMap.cellBounds);
@@ -81,8 +82,7 @@ public class PlayerLightSystem : MonoBehaviour
             }
         }
 
-        if (litLanters == lanternCount) return true;
-        else return false;
+        if (litLanters == lanternCount) playerHasWon = true;
     }
     public void incrementPhotonsLeft()
     {
