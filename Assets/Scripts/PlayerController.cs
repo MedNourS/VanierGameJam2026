@@ -58,10 +58,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             xPlayerControl = Input.GetKeyDown(KeyCode.A) ? -1 : (Input.GetKeyDown(KeyCode.D) ? 1 : 0);
+            lightRotation.updateRotation();
         }
         else
         {
             yPlayerControl = Input.GetKeyDown(KeyCode.W) ? 1 : (Input.GetKeyDown(KeyCode.S) ? -1 : 0);
+            lightRotation.updateRotation();
         }
 
         // if button and not in movement and can move to target 
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(!playerDead) changeSprite();
+        if (!playerDead) changeSprite();
     }
     private void checkIfPlayerDies(Vector2 playerPos)
     {
@@ -125,7 +127,8 @@ public class PlayerController : MonoBehaviour
     bool canMove(Vector2 nextPosition)
     {
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
-        if (!colsTilesMap.HasTile(gridPosition))
+        Vector3Int currentPos = colsTilesMap.WorldToCell(new Vector3(rb.position.x, rb.position.y));
+        if (!colsTilesMap.HasTile(gridPosition) && playerLightSystem.checkForObstacles(currentPos, lightRotation.lightDirection))
         {
             if (playerLightSystem.playerHasWon && exitTileMap.HasTile(gridPosition))
             {

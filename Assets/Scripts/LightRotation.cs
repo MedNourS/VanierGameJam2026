@@ -31,4 +31,28 @@ public class LightRotation : MonoBehaviour
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(new Vector3(0, 0, targetRotation)), 180);
     }
+
+    public void updateRotation()
+    {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            targetRotation = 0;
+            lightDirection = new Vector3Int(0, 1, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            targetRotation = -90;
+            lightDirection = new Vector3Int(1, 0, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            targetRotation = -180;
+            lightDirection = new Vector3Int(0, -1, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            targetRotation = -270;
+            lightDirection = new Vector3Int(-1, 0, 0);
+        }
+    }
 }
