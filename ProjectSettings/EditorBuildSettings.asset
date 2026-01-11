@@ -8,9 +8,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 30c40a8f184dc8694b67c5f13e945513
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Scene 1.unity
-    guid: 134b1e29de1ee875dbbefb2e7db0f27f
+    guid: 4ea34fba4fa1741b99893c2bcbf96b42
+  - enabled: 1
+    path: Assets/Scenes/Scene 2.unity
+    guid: e5a4fb220bdf54bbaa34b680d25b61a0
+  - enabled: 1
+    path: Assets/Scenes/Scene 3.unity
+    guid: 014758bb4806d4b6fb7be4baa13462ca
+  - enabled: 1
+    path: Assets/Scenes/Scene 4.unity
+    guid: ab406baa1619f478c8933a3d2dc369b9
+  - enabled: 1
+    path: Assets/Scenes/Scene 5.unity
+    guid: 80c9459d949134182b0d3626e35284d7
+  - enabled: 1
+    path: Assets/Scenes/Scene 6.unity
+    guid: 3b675ca58aa854ab48d8f00223346f0d
+  - enabled: 1
+    path: Assets/Scenes/Scene7.unity
+    guid: dd60fed0ac3ba4606aebc4353304f6ec
+  - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: d233afe90138e17ac9eb82c7f29df918
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
       type: 3}
