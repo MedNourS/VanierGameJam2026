@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LightRotationOnPlayerMovement : MonoBehaviour
+public class LightRotation : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed;
     public Vector3Int lightDirection;
