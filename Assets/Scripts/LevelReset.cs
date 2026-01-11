@@ -7,7 +7,12 @@ public class LevelReset : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneReset();
         }  
+    }
+
+    public void SceneReset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
