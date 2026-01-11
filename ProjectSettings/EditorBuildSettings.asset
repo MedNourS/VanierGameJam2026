@@ -11,9 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene 1.unity
     guid: 4ea34fba4fa1741b99893c2bcbf96b42
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene 2.unity
+<<<<<<< HEAD
     guid: dc15714624742eb7cb195984056f18dd
+=======
+    guid: e5a4fb220bdf54bbaa34b680d25b61a0
+>>>>>>> 16b9b99 (fixed levelManager)
   - enabled: 0
     path: Assets/Scenes/Scene 3.unity
     guid: 014758bb4806d4b6fb7be4baa13462ca
