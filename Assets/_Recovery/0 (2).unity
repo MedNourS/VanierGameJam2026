@@ -191,15 +191,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1000
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -3388727044240203725, guid: eb08324048f0c0a2683aea1960a6c38b,
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 2, y: 2}
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 1
+  m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!4 &32898648
@@ -233,27 +233,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   textMesh: {fileID: 1707348555}
   lanternLightingScript: {fileID: 1901857846}
-  front_stand: {fileID: -3388727044240203725, guid: eb08324048f0c0a2683aea1960a6c38b,
-    type: 3}
-  right_stand: {fileID: -5169596237255572395, guid: eb08324048f0c0a2683aea1960a6c38b,
-    type: 3}
-  back_stand: {fileID: -3479722057255195373, guid: eb08324048f0c0a2683aea1960a6c38b,
-    type: 3}
-  left_stand: {fileID: 6647378562916941733, guid: eb08324048f0c0a2683aea1960a6c38b,
-    type: 3}
-  front_walk: {fileID: 5442727716136639153, guid: eb08324048f0c0a2683aea1960a6c38b,
-    type: 3}
-  right_walk: {fileID: -8718040335606068025, guid: eb08324048f0c0a2683aea1960a6c38b,
-    type: 3}
-  back_walk: {fileID: 8056097919945483756, guid: eb08324048f0c0a2683aea1960a6c38b,
-    type: 3}
   rb: {fileID: 32898650}
   colsTilesMap: {fileID: 1982909813}
   photonsTilesMap: {fileID: 1217735585}
   lanternTileMap: {fileID: 1901857845}
   exitTileMap: {fileID: 548750214}
   unlitLanternTile: {fileID: 11400000, guid: 906711aad0df3165fbc0435433be8827, type: 2}
-  lightRotation: {fileID: 710330248}
   levelManager: {fileID: 1279842119}
   xStep: 1
   yStep: 1
@@ -322,12 +307,12 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.1}
-    oldSize: {x: 3.84, y: 3.84}
-    newSize: {x: 2, y: 2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
-    adaptiveTiling: 1
+    drawMode: 0
+    adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
@@ -344,15 +329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   photons: {fileID: 1217735585}
-  colsTileMap: {fileID: 0}
-  exitTileMap: {fileID: 548750214}
-  obstaclesTileMap: {fileID: 0}
+  obstacles: {fileID: 1982909813}
   photonTile: {fileID: 11400000, guid: 78f766a6605cc8767b6092a5876b9da8, type: 2}
   litLanternTile: {fileID: 11400000, guid: a1acbb5009c41aeca8d3f788c8a84de3, type: 2}
-  bottomObstacle: {fileID: 0}
-  upObstacle: {fileID: 0}
-  leftObstacle: {fileID: 0}
-  rightObstacle: {fileID: 0}
   lightRotation: {fileID: 710330248}
   lanternsTileMap: {fileID: 1901857845}
   textMesh: {fileID: 1707348555}
@@ -856,7 +835,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.69
-  m_Color: {r: 0.9622642, g: 0.94493157, b: 0.031772893, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -2528,8 +2507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e101580bf1e77d8eac0755f0855ad10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  nextScene: {fileID: 102900000, guid: 134b1e29de1ee875dbbefb2e7db0f27f, type: 3}
-  previousScene: {fileID: 0}
+  nextScene: {}
 --- !u!4 &1279842120
 Transform:
   m_ObjectHideFlags: 0

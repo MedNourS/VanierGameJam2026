@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,13 +8,22 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textMesh;
     [SerializeField] private LanternLightingScript lanternLightingScript;
+    [SerializeField] private Sprite front_stand;
+    [SerializeField] private Sprite right_stand;
+    [SerializeField] private Sprite back_stand;
+    [SerializeField] private Sprite left_stand;
+    [SerializeField] private Sprite front_walk;
+    [SerializeField] private Sprite right_walk;
+    [SerializeField] private Sprite back_walk;
+
     public Rigidbody2D rb;
     public Tilemap colsTilesMap;
     public Tilemap photonsTilesMap;
     public Tilemap lanternTileMap;
     public Tilemap exitTileMap;
     public TileBase unlitLanternTile;
-
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private LightRotation lightRotation;
     private PlayerLightSystem playerLightSystem;
     public LevelManager levelManager;
 
@@ -30,6 +40,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         playerLightSystem = GetComponent<PlayerLightSystem>();
         newPos = new Vector2(
             rb.position.x,
@@ -39,11 +50,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        xPlayerControl = Input.GetKeyDown(KeyCode.A) ? -1 : (Input.GetKeyDown(KeyCode.D) ? 1 : 0);
-        yPlayerControl = Input.GetKeyDown(KeyCode.W) ? 1 : (Input.GetKeyDown(KeyCode.S) ? -1 : 0);
+        xPlayerControl = 0;
+        yPlayerControl = 0;
+
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            xPlayerControl = Input.GetKeyDown(KeyCode.A) ? -1 : (Input.GetKeyDown(KeyCode.D) ? 1 : 0);
+        }
+        else
+        {
+            yPlayerControl = Input.GetKeyDown(KeyCode.W) ? 1 : (Input.GetKeyDown(KeyCode.S) ? -1 : 0);
+        }
 
         // if button and not in movement and can move to target 
-        if (getButtons() && canMove(new Vector2(
+        if (getButtons() && !inMovement() && canMove(new Vector2(
                 newPos.x + xPlayerControl * xStep,
                 newPos.y + yPlayerControl * yStep
             )))
@@ -64,12 +84,13 @@ public class PlayerController : MonoBehaviour
                     lanternLightingScript.updateLanterns();
                 }
 
-
                 PlayerEvents.Singleton.OnPhotonsChanged?.Invoke(this, new PlayerEvents.OnPhotonsChangedEventArgs { photonsLeft = playerLightSystem.photonsLeft });
 
                 Debug.Log("Player dead? " + checkIfPlayerDies(newPos));
             }
         }
+
+        changeSprite();
     }
     private bool checkIfPlayerDies(Vector2 playerPos)
     {
@@ -92,7 +113,12 @@ public class PlayerController : MonoBehaviour
         return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
     }
 
-    private bool canMove(Vector2 nextPosition)
+    bool inMovement()
+    {
+        return !(0.48 <= math.abs(rb.position.x % 1) && math.abs(rb.position.x % 1) <= 0.52) && !(0.48 <= math.abs(rb.position.y % 1) && math.abs(rb.position.y % 1) <= 0.52);
+    }
+
+    bool canMove(Vector2 nextPosition)
     {
         Vector3Int gridPosition = colsTilesMap.WorldToCell((Vector3)nextPosition);
         if (!colsTilesMap.HasTile(gridPosition))
@@ -106,5 +132,23 @@ public class PlayerController : MonoBehaviour
             return false;
         }
         else return false;
+    }
+
+    void changeSprite()
+    {
+        if (inMovement())
+        {
+            if (lightRotation.targetRotation == 0f) spriteRenderer.sprite = back_walk;
+            if (lightRotation.targetRotation == -270f) spriteRenderer.sprite = left_stand;
+            if (lightRotation.targetRotation == -180f) spriteRenderer.sprite = front_walk;
+            if (lightRotation.targetRotation == -90f) spriteRenderer.sprite = right_walk;
+        }
+        else
+        {
+            if (lightRotation.targetRotation == 0f) spriteRenderer.sprite = back_stand;
+            if (lightRotation.targetRotation == -270f) spriteRenderer.sprite = left_stand;
+            if (lightRotation.targetRotation == -180f) spriteRenderer.sprite = front_stand;
+            if (lightRotation.targetRotation == -90f) spriteRenderer.sprite = right_stand;
+        }
     }
 }
