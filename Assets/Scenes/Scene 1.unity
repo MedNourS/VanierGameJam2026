@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   photonStrength: 0.1
-  minLigth: 0.2
+  minLigth: 1
 --- !u!1 &1007047863
 GameObject:
   m_ObjectHideFlags: 0
