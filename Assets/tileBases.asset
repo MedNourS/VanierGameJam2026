@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8d741dd2d891bff990b50b813fb807, type: 3}
+  m_Name: tileBases
+  m_EditorClassIdentifier: Assembly-CSharp::ObstaclesDirections
+  bottomObstacle: {fileID: 11400000, guid: 4423b9a852d4efcf5b52e063cba7ae8a, type: 2}
+  upObstacle: {fileID: 11400000, guid: 9ef574cd994a2d2caa527aa41c3a4a9b, type: 2}
+  leftObstacle: {fileID: 11400000, guid: 86b8b44374cd79023b2d9bbb9eb9b1c1, type: 2}
+  rightObstacle: {fileID: 11400000, guid: 3948e8cffdb380b5e986f4e65f5b1e1c, type: 2}
